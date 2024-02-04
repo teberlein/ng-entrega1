@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DestinoViajeComponent } from '../destino-viaje/destino-viaje.component';
+import { DestinoViaje } from '../models/destino-viaje.model';
 import { NgFor, CommonModule } from '@angular/common';
 
 @Component({
@@ -11,13 +12,18 @@ import { NgFor, CommonModule } from '@angular/common';
 })
 
 export class ListaDestinosComponent implements OnInit{
-  destinos: string[];
+  destinos: DestinoViaje[];
   constructor() {
-    this.destinos = ['Barranquilla', 'Lima', 'Buenos Aires', 'Barcelona']
+    this.destinos = []
   }
 
   ngOnInit(): void {
       
+  }
+
+  guardar(nombre:string, url:string):boolean {
+    this.destinos.push((new DestinoViaje(nombre,url)));
+    return false;
   }
 }
 
